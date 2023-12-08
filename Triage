@@ -1,0 +1,8 @@
+-Run device diagnostic #this will be seperate commands for memory,hdd/sdd,sfc /scannow,network check, save these to a log
+-install winget, then update all programs
+-install powershell windows update, then update the machine
+-reminder to delete old name from AD if applicable
+-Check Bitlocker
+
+*output these to a file
+*remember make these all optional or can run in bulk
