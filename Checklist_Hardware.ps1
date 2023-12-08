@@ -1,5 +1,6 @@
 # PowerShell Hardware Repair Checklist
 
+#This can be changed
 $checklistFile = "C:\Projects\HardwareRepairChecklist.txt"
 
 # Function to prompt for completion of each step
@@ -10,7 +11,7 @@ function PromptForStepCompletion($step) {
 
 # Function to display canned response
 function DisplayCannedResponse {
-    Write-Host "Canned response: Thank you for reaching out! We have received your hardware repair request and are actively working on it. We will keep you updated on the progress."
+    Write-Host "Canned response: Thank you for reaching out! We have received your hardware repair request and are actively working on it. We will keep you updated on the progress. Please be on the lookout for an email from UPS."
 }
 
 # Function to procure a machine name from AD
@@ -22,12 +23,14 @@ function GetNextAvailableMachineName {
 # Function to open UPS website
 function OpenUpsWebsite {
     # Example: Manual intervention needed here
+    #OPEN SPEEDSHIP WEBSITE HERE
     Write-Host "Manually open the UPS website."
 }
 
 # Function to open Excel macro file
 function OpenExcelMacroFile {
     # Example: Manual intervention needed here
+    #EDIT MACRO TO OPEN TICKET TRACKER AND ALLOCATION, THEN OPEN IT HERE
     Write-Host "Manually open the Excel macro file."
 }
 
