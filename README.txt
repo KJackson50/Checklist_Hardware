@@ -8,3 +8,7 @@ Start the 'Checklist_Hardware' script
 
 #THINK ABOUT MERGING 'After_Image' and 'Triage' into one script, and just splitting steps up by 'triage' and 'after image'. The new script can be called Diagnostic_Kit.
 #Make this checklist script create a folder FIRST in the network area. after checklist is done, it outputs the list. After 'Diagnostic_Kit' is finished, it will output to the same folder. this should also check to see if the folder was already made. If not it will create it (if it's run standalone). Just output an error if the machine is not on the network and continue anyway.
+
+NOTES:
+-Machine diagnostics step should be done BEFORE bitlocker. hard drive tests make bitlocker act up
+-Remove capture QA and QA document step, they are redundant
