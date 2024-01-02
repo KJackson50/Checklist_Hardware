@@ -1,27 +1,18 @@
-# Define the print server
-$printServer = "\\YourPrintServer"
+@echo off
 
-# Prompt the technician for printer names
-$printerNames = Read-Host "Enter printer names (separated by commas)"
+:: Define the print server
+set "printServer=\\YourPrintServer"
 
-# Split the input into an array of printer names
-$printerNames = $printerNames -split ',' | ForEach-Object { $_.Trim() }
+:: Prompt the technician for printer names
+set /p printerNames="Enter printer names (separated by commas): "
 
-# Install printers for all users
-foreach ($printerName in $printerNames) {
-    # Install the printer
-    Add-Printer -ConnectionName "$printServer\$printerName"
+:: Split the input into an array of printer names
+for %%a in (%printerNames%) do (
+    :: Install the printer using rundll32
+    rundll32 printui.dll,PrintUIEntry /ga /c%printServer% /n%printServer%\%%a
 
-    # Set the printer as the default for all users
-    $keyPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Print\Providers\Client Side Rendering Print Provider"
-    $valueName = "CsidlPrintHood"
-    $printHoodPath = Join-Path $env:SystemRoot "system32\spool\drivers\color"
-    
-    if (-not (Test-Path $keyPath)) {
-        New-Item -Path $keyPath -Force
-    }
+    :: Set the printer as the default
+    rundll32 printui.dll,PrintUIEntry /y /n%printServer%\%%a
+)
 
-    Set-ItemProperty -Path $keyPath -Name $valueName -Value $printHoodPath
-}
-
-Write-Host "Printers installed successfully for all users."
+echo Printers installed successfully for all users.
